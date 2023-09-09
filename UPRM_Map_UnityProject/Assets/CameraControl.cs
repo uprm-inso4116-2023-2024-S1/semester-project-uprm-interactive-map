@@ -16,26 +16,43 @@ public class CameraControl : MonoBehaviour
     private float maxFOV = 160f;
     private float minFOV = 0f;
     private float defaultFOV = 60f;
+    private float cameraForceMultiplier = 50f;
+
+    void Start()
+    {
+        //pplication.targetFrameRate = 60; //TODO - make this statement a responsibility of another class and gameObject
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Mouse2))
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.Mouse2)) 
         {
-            CamOrbit();
+            //CamOrbit(); not used for now
         }
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.F))
         {
-            FitToScreen();
+            //FitToScreen(); not used for now
         }
         if (Input.GetMouseButtonDown(2) && !Input.GetKey(KeyCode.LeftShift))
         {
-            mouseWorldPosStart = GetPerspectivePos();
+            //mouseWorldPosStart = GetPerspectivePos();
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift))
         {
             Pan();
         }
+        if (Input.GetMouseButtonUp(0))
+        {
+            var rigidBody = GetComponent<Rigidbody>();
+            rigidBody.AddForce(Camera.main.velocity * cameraForceMultiplier);
+        }
+        //TODO - figure out how these inputs can be made compatible for mobile
         Zoom(Input.GetAxis("Mouse ScrollWheel"));
     }
 
@@ -77,9 +94,6 @@ public class CameraControl : MonoBehaviour
     {
         if (Input.GetAxis("Mouse Y") != 0 || Input.GetAxis("Mouse X") != 0)
         {
-            //TODO - identify why the following statements make the camera teleport when you start dragging the cursor
-            
-            //Vector3 mouseWorldPosDiff = mouseWorldPosStart - GetPerspectivePos();
             Vector3 mouseWorldPosDiff = mouseWorldPosStart - GetPerspectivePos();
             transform.position += mouseWorldPosDiff;
         }
@@ -90,7 +104,6 @@ public class CameraControl : MonoBehaviour
         mouseWorldPosStart = GetPerspectivePos();
         if (zoomDiff != 0)
         {
-            //mouseWorldPosStart = GetPerspectivePos();
             Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView - zoomDiff * zoomScale, minFOV, maxFOV);
             Vector3 mouseWorldPosDiff = mouseWorldPosStart - GetPerspectivePos();
             transform.position += mouseWorldPosDiff;
