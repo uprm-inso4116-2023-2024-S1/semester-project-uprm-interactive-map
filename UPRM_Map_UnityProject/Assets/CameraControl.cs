@@ -35,7 +35,6 @@ public class CameraControl : MonoBehaviour
         if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift))
         {
             Pan();
-            Debug.Log("panning");
         }
         Zoom(Input.GetAxis("Mouse ScrollWheel"));
     }
@@ -78,6 +77,9 @@ public class CameraControl : MonoBehaviour
     {
         if (Input.GetAxis("Mouse Y") != 0 || Input.GetAxis("Mouse X") != 0)
         {
+            //TODO - identify why the following statements make the camera teleport when you start dragging the cursor
+            
+            //Vector3 mouseWorldPosDiff = mouseWorldPosStart - GetPerspectivePos();
             Vector3 mouseWorldPosDiff = mouseWorldPosStart - GetPerspectivePos();
             transform.position += mouseWorldPosDiff;
         }
@@ -85,9 +87,10 @@ public class CameraControl : MonoBehaviour
 
     private void Zoom(float zoomDiff)
     {
+        mouseWorldPosStart = GetPerspectivePos();
         if (zoomDiff != 0)
         {
-            mouseWorldPosStart = GetPerspectivePos();
+            //mouseWorldPosStart = GetPerspectivePos();
             Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView - zoomDiff * zoomScale, minFOV, maxFOV);
             Vector3 mouseWorldPosDiff = mouseWorldPosStart - GetPerspectivePos();
             transform.position += mouseWorldPosDiff;
