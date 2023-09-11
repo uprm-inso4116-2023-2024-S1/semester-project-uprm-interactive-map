@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/homepage.styles.css" asp-append-version="true" />
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -16,9 +18,9 @@
                     background-color: #4d7e3e !important;
                 }
             </style>
-            <div class="container" >
+            <div class="container">
                 <a href="@Url.Action("Index", "Home")" class="navbar-brand">
-                    <img src="~/images/Logo.png" width="230" height="50"/>
+                    <img src="~/images/Logo.png" width="230" height="50" />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                     <span class="navbar-toggler-icon"></span>
@@ -41,7 +43,7 @@
                                     <li>@Html.TextBox("id", ViewBag.CurrentFilter as string)</li>
                                     <li><input type="submit" value="Search" /></li>
                                 </ul>
-                            }                       
+                            }
                         </li>
                         <li class="nav-item">
                             @* Placeholder page link *@
@@ -70,4 +72,5 @@
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
