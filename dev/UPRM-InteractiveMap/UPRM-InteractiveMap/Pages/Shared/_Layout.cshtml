@@ -15,10 +15,53 @@
                 .navbar {
                     background-color: #4d7e3e !important;
                 }
+
+                .sidenav {
+                    height: 88%;
+                    width: 160px;
+                    position: fixed;
+                    z-index: 1;
+                    top: 0;
+                    left: 0;
+                    background-color: #4d7e3e;
+                    overflow-x: hidden;
+                    padding-top: 20px;
+                }
+
+                    .sidenav a {
+                        padding: 6px 8px 6px 16px;
+                        text-decoration: none;
+                        font-size: 20px;
+                        color: #000000;
+                        display: block;
+                    }
+
+                        .sidenav a:hover {
+                            color: #f1f1f1;
+                        }
+
+                .main {
+                    margin-left: 160px;
+                    font-size: 28px;
+                    padding: 0px 10px;
+                }
+
+                media screen and (max-height: 450px) {
+                    .sidenav
+
+                {
+                    padding-top: 15px;
+                }
+
+                .sidenav a {
+                    font-size: 12px;
+                }
+
+                }
             </style>
-            <div class="container" >
+            <div class="container">
                 <a href="@Url.Action("Index", "Home")" class="navbar-brand">
-                    <img src="~/images/Logo.png" width="230" height="50"/>
+                    <img src="~/images/Logo.png" width="230" height="50" />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                     <span class="navbar-toggler-icon"></span>
@@ -41,7 +84,7 @@
                                     <li>@Html.TextBox("id", ViewBag.CurrentFilter as string)</li>
                                     <li><input type="submit" value="Search" /></li>
                                 </ul>
-                            }                       
+                            }
                         </li>
                         <li class="nav-item">
                             @* Placeholder page link *@
@@ -69,5 +112,15 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
+
+
+    <div class="sidenav">
+        <br>
+        <br>
+        <a href="#building">Building</a>
+        <br>
+        <a href="#Schedule">Schedule</a>
+    </div>
+
 </body>
 </html>
