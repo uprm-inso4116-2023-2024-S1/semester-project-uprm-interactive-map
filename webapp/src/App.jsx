@@ -33,7 +33,7 @@ export default function App() {
 
 
   function handleClickSpawnEnemies() {
-    sendMessage("DbFetch", "FetchEmail", "FetchEmail");
+    sendMessage("DbFetch", "FetchEmail", "test works");
   }
 
 
