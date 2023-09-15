@@ -20,7 +20,7 @@ public class CameraControl : MonoBehaviour
 
     void Start()
     {
-        //pplication.targetFrameRate = 60; //TODO - make this statement a responsibility of another class and gameObject
+        //Application.targetFrameRate = 60; //TODO - make this statement a responsibility of another class and gameObject
     }
 
     // Update is called once per frame
