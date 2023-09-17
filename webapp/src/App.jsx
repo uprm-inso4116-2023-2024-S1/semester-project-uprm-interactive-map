@@ -1,18 +1,16 @@
-import "./index.css";
+import './index.css'
 
-import { Button, Center, Text } from "@chakra-ui/react";
+import { Center, Text } from "@chakra-ui/react";
 import { Unity, useUnityContext } from "react-unity-webgl";
 import { useEffect, useState } from "react";
 
 import { Auth } from "@supabase/auth-ui-react";
-import { Home } from "./screens/Home";
 import { Overlay } from "./components/Overlay";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "./supabaseClient";
 
 export default function App() {
   const [session, setSession] = useState(null);
-  const [email, setEmail] = useState(null);
   // change device pixel ratio when resizing the browser window
   const [devicePixelRatio, setDevicePixelRatio] = useState(
     window.devicePixelRatio
@@ -35,7 +33,6 @@ export default function App() {
     supabase.auth.getSession().then(({ data: { session } }) => {
       // on build check if session has a registered user
       setSession(session);
-      setEmail(session.user.email);
     });
 
     const {
@@ -43,7 +40,6 @@ export default function App() {
     } = supabase.auth.onAuthStateChange((_event, session) => {
       // while on webpage check if user has authenticated
       setSession(session);
-      setEmail(session.user.email);
     });
 
     // A function which will update the device pixel ratio of the Unity
@@ -96,7 +92,7 @@ export default function App() {
             //Overlay shows buttons on top of Unity webgl
             //Example button:
             // - Sign Out
-            // - Show Email inside of Unity Text Object
+            // - Show Email inside of Unity Text Object  
            
         <Overlay
           session={session}
