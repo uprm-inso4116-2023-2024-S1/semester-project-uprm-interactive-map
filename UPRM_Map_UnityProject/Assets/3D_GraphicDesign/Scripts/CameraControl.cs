@@ -8,7 +8,7 @@ using Vector3 = UnityEngine.Vector3;
 
 public class CameraControl : MonoBehaviour
 {
-    public GameObject parentModel;
+    //public GameObject parentModel; not used for now
 
     private float rotationSpeed = 500f;
     private Vector3 mouseWorldPosStart;
@@ -78,7 +78,7 @@ public class CameraControl : MonoBehaviour
 
         return bound;
     }
-
+    /* not used for now
     public void FitToScreen()
     {
         Camera.main.fieldOfView = defaultFOV;
@@ -89,6 +89,7 @@ public class CameraControl : MonoBehaviour
         float camDistanceToBoundWithOffset = camDistanceToBoundCenter + boundDiagonal / 2f - (Camera.main.transform.position - transform.position).magnitude;
         transform.position = bound.center + (-transform.forward * camDistanceToBoundWithOffset);
     }
+    */
 
     private void Pan()
     {
