@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/DONTEDIT_MainScene.unity
+    path: Assets/Scenes/DONTEDIT_MainScene_merge-test.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/CameraMovement_JanBadillo.unity
+    path: Assets/Scenes/CameraMovement_JB_merge-test.unity
     guid: 2557049483f42fe4793e5b03492ce077
   m_configObjects: {}

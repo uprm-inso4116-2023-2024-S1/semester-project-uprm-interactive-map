@@ -12,7 +12,7 @@ public class CameraControl : MonoBehaviour
 
     private float rotationSpeed = 500f;
     private Vector3 mouseWorldPosStart;
-    private float zoomScale = 10f;
+    private float zoomScale = 50f;
     private float maxFOV = 160f;
     private float minFOV = 0f;
     private float defaultFOV = 60f;
