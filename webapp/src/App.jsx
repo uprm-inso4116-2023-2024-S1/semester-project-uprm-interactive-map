@@ -1,12 +1,11 @@
-import './index.css'
+import "./index.css";
 
 import { Center, Text } from "@chakra-ui/react";
 import { Unity, useUnityContext } from "react-unity-webgl";
 import { useEffect, useState } from "react";
 
-import { Auth } from "@supabase/auth-ui-react";
+import { Authentication } from "../screens/Authentication";
 import { Overlay } from "./components/Overlay";
-import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { supabase } from "./supabaseClient";
 
 export default function App() {
@@ -24,8 +23,6 @@ export default function App() {
       frameworkUrl: "/Builds.framework.js.br",
       codeUrl: "/Builds.wasm.br",
     });
-
- 
 
   useEffect(() => {
     // We'll use the onAuthStateChange() method to listen for changes in
@@ -59,13 +56,12 @@ export default function App() {
       // Removing the event listener when the component unmounts.
       mediaMatcher.removeEventListener("change", updateDevicePixelRatio);
     };
-
   }, [devicePixelRatio]);
 
   const loadingPercentage = Math.round(loadingProgression * 100);
   if (!session) {
     // if user has no active session redirect to user authentication
-    return <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />;
+    return <Authentication />;
   } else {
     return (
       <>
@@ -85,23 +81,22 @@ export default function App() {
               fontSize="xl"
               fontWeight="bold"
               textAlign="center"
-            >Loading... ({loadingPercentage}%)</Text>
+            >
+              Loading... ({loadingPercentage}%)
+            </Text>
           </Center>
-        ):(
-          
-            //Overlay shows buttons on top of Unity webgl
-            //Example button:
-            // - Sign Out
-            // - Show Email inside of Unity Text Object  
-           
-        <Overlay
-          session={session}
-          sendMessage={sendMessage}
-          unityProvider={unityProvider}
+        ) : (
+          //Overlay shows buttons on top of Unity webgl
+          //Example button:
+          // - Sign Out
+          // - Show Email inside of Unity Text Object
 
-        />
-        )
-        }
+          <Overlay
+            session={session}
+            sendMessage={sendMessage}
+            unityProvider={unityProvider}
+          />
+        )}
 
         <Unity
           unityProvider={unityProvider}
