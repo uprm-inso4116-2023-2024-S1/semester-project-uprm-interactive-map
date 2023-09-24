@@ -1,7 +1,8 @@
 import { Button, Stack, Input } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-
+import Accordion from 'react-bootstrap/Accordion';
 import { supabase } from "../supabaseClient";
+
 
 export const Overlay = (
   {sendMessage}
@@ -40,6 +41,40 @@ export const Overlay = (
   }
   return (
     // horizontal stack of buttons
+
+    <>
+
+          <Stack
+              direction={"col"}
+              spacing={"100%"}
+              height={"100%"}
+              width={"100%"}
+              style={styles.overlay}
+
+
+          >
+              <Accordion defaultActiveKey="1">
+                  <Accordion.Item eventKey="0">
+                      <Accordion.Header> behind</Accordion.Header>
+                      <Accordion.Body>
+                      </Accordion.Body>
+                  </Accordion.Item>
+                  <Accordion.Item eventKey="1">
+                      <Accordion.Header>Building</Accordion.Header>
+                      <Accordion.Body>
+                          ------------
+                      </Accordion.Body>
+                  </Accordion.Item>
+                  <Accordion.Item eventKey="2">
+                      <Accordion.Header>Schedule</Accordion.Header>
+                      <Accordion.Body>
+                          ------------
+                      </Accordion.Body>
+                  </Accordion.Item>
+              </Accordion>
+          </Stack>
+
+
     <Stack
       direction={"row"}
       spacing={"5%"}
@@ -71,7 +106,8 @@ export const Overlay = (
       >
         Sign Out
       </Button>
-    </Stack>
+          </Stack>
+    </>
   );
 };
 
