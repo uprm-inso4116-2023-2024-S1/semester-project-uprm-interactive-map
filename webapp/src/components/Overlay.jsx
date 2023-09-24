@@ -1,5 +1,5 @@
-import { Button, Stack } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import { Button, Stack, Input } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 
 import { supabase } from "../supabaseClient";
 
@@ -8,6 +8,7 @@ export const Overlay = (
 ) => {
   // set email to null to prevent infinite loop
   const [email, setEmail] = React.useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(
     () => {
@@ -33,6 +34,10 @@ export const Overlay = (
       return "Loading...";
     }
   }
+  function handleSearch() {
+    // Handle search here (you can call a function or perform an API request)
+    console.log("Search Query:", searchQuery);
+  }
   return (
     // horizontal stack of buttons
     <Stack
@@ -42,14 +47,23 @@ export const Overlay = (
       width={"100%"}
       style={styles.overlay}
     >
-      <Button>UPRM Interactive Map</Button>
+      {/* <Button>UPRM Interactive Map</Button> */}
+      <Button><img style={{width: 230, height: 50}} src="https://i.ibb.co/3sB25sy/Logo-removebg-preview.png" /></Button>
       <Button
         onClick={() => {
           showUserEmail();
         }}
       >
-        Show Email
+        Profile
       </Button>
+      <Input
+        type="text"
+        placeholder="Search..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      >
+      </Input>
+      <Button onClick={() => handleSearch()}>Search</Button>
       <Button
         onClick={() => {
           supabase.auth.signOut();
