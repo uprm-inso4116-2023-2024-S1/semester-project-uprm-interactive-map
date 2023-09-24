@@ -1,8 +1,7 @@
 import { Button, Stack, Input } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import Accordion from 'react-bootstrap/Accordion';
 import { supabase } from "../supabaseClient";
-
+import Sidebar from "./Sidebar";
 
 export const Overlay = (
   {sendMessage}
@@ -44,35 +43,15 @@ export const Overlay = (
 
     <>
 
-          <Stack
-              direction={"col"}
-              spacing={"100%"}
-              height={"100%"}
-              width={"100%"}
-              style={styles.overlay}
-
-
-          >
-              <Accordion defaultActiveKey="1">
-                  <Accordion.Item eventKey="0">
-                      <Accordion.Header> behind</Accordion.Header>
-                      <Accordion.Body>
-                      </Accordion.Body>
-                  </Accordion.Item>
-                  <Accordion.Item eventKey="1">
-                      <Accordion.Header>Building</Accordion.Header>
-                      <Accordion.Body>
-                          ------------
-                      </Accordion.Body>
-                  </Accordion.Item>
-                  <Accordion.Item eventKey="2">
-                      <Accordion.Header>Schedule</Accordion.Header>
-                      <Accordion.Body>
-                          ------------
-                      </Accordion.Body>
-                  </Accordion.Item>
-              </Accordion>
-          </Stack>
+      <Stack
+        direction={"col"}
+        spacing={"100%"}
+        height={"100%"}
+        width={"100%"}
+        style={styles.sidebar}
+      >
+        <Sidebar />
+      </Stack>
 
 
     <Stack
@@ -130,4 +109,12 @@ const styles = {
     border: "none",
     outline: "none",
   },
+  sidebar: {
+    position: "absolute",
+    top: "15%",
+    left: "5%",
+    width: "10%",
+    height: "10%",
+    zIndex: "1",
+  }
 };
