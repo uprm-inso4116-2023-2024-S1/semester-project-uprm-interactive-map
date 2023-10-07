@@ -13,16 +13,11 @@ public class CameraControl : MonoBehaviour
     private float rotationSpeed = 500f;
     private Vector3 mouseWorldPosStart;
     private float zoomScale = 50f;
-    private float maxFOV = 160f;
-    private float minFOV = 0f;
+    private float maxFOV = 130f;
+    private float minFOV = 30f;
     private float defaultFOV = 60f;
     private float cameraForceMultiplier = 50f;
-
-    void Start()
-    {
-        //Application.targetFrameRate = 60; //TODO - make this statement a responsibility of another class and gameObject
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
