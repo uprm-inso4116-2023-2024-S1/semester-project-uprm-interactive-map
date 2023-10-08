@@ -1,0 +1,55 @@
+.scheduler {
+  height: 700px;
+  width: 750%;
+  background-color: rgb(223, 234, 223);
+  position: absolute;
+  top: 100%;
+  right: -765%;
+}
+
+.header{
+  text-align: center;
+}
+
+table{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #050505;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.addCourse{
+  position: absolute;
+  background-color: rgb(90, 245, 126);
+  top: 80%;
+  left: 8%;
+  border-radius: 2px;
+  border-color: #050505;
+}
+
+.editCourse{
+  position: absolute;
+  background-color: red;
+  top: 90%;
+  left: 8%;
+  border-radius: 2px;
+  border-color: #050505;
+}
+
+.save{
+  position: absolute;
+  background-color: #73c6fa;
+  top: 80%;
+  left: 85%;
+  border-radius: 2px;
+  border-color: #050505;
+}

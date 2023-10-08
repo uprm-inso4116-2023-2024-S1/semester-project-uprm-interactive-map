@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Box, List, ListItem } from "@chakra-ui/react";
+import './Scheduler'
+import Scheduler from "./Scheduler";
 
 const buildingsInfo = [
     {
@@ -33,6 +35,8 @@ export default function Sidebar() {
         setShowBox(newArray);
     }
 
+
+
   return (
     <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="1">
@@ -62,7 +66,15 @@ export default function Sidebar() {
 
       <Accordion.Item eventKey="2">
         <Accordion.Header>Schedule</Accordion.Header>
-        <Accordion.Body>------------</Accordion.Body>
+         <Accordion.Body> <Button 
+                                 colorScheme="blue"
+                                 backgroundColor="Green" 
+                                 >Add courses</Button>
+                                 <Scheduler />
+                                 
+                                
+                                 
+                                 </Accordion.Body>
       </Accordion.Item>
     </Accordion>
   );
