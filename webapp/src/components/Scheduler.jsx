@@ -1,10 +1,14 @@
 import './Scheduler.css';
+import { IconButton } from "@chakra-ui/react";
+import { AiOutlineClose } from "react-icons/ai";
 
-
-function Scheduler(){
+function Scheduler({ closeScheduler }){
     return (<div>
         <div className="scheduler">
             <div className="header">
+                <div className="closebtn"> 
+                    <IconButton icon={<AiOutlineClose />} onClick={closeScheduler} />
+                </div>
                 <h1>Course Schedule</h1>
                 <table>
                     <tr>

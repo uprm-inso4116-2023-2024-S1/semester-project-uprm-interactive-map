@@ -53,3 +53,9 @@ tr:nth-child(even) {
   border-radius: 2px;
   border-color: #050505;
 }
+
+.closebtn {
+  position: absolute;
+  right: 0px;
+  margin-right: 5px;
+}

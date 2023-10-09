@@ -28,14 +28,21 @@ export default function Sidebar() {
     const [showBox, setShowBox] = useState(
         Array(buildingsInfo.length).fill(false)
     );
+    const [showScheduler, setShowScheduler] = useState(false);
 
-    const handleButtonClick = (index) => {
+    function handleButtonClick(index){
         const newArray = [...showBox];
         newArray[index] = !newArray[index];
         setShowBox(newArray);
     }
 
+    function openScheduler() {
+        setShowScheduler(true);
+    }
 
+    function closeScheduler() {
+        setShowScheduler(false);
+    }
 
   return (
     <Accordion defaultActiveKey="0">
@@ -66,15 +73,22 @@ export default function Sidebar() {
 
       <Accordion.Item eventKey="2">
         <Accordion.Header>Schedule</Accordion.Header>
-         <Accordion.Body> <Button 
-                                 colorScheme="blue"
-                                 backgroundColor="Green" 
-                                 >Add courses</Button>
-                                 <Scheduler />
-                                 
-                                
-                                 
-                                 </Accordion.Body>
+         <Accordion.Body> 
+            <Button 
+                colorScheme="blue"
+                backgroundColor="Green" 
+                onClick={openScheduler}
+            >
+                Add courses
+            </Button>
+
+            {showScheduler && (
+                <Scheduler
+                    closeScheduler={closeScheduler}
+                />
+            )}
+
+        </Accordion.Body>
       </Accordion.Item>
     </Accordion>
   );
