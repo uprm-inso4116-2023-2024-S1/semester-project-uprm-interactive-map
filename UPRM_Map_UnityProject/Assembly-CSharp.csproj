@@ -88,6 +88,7 @@
      <Folder Include="Assets\3D_GraphicDesign\SatelliteReferenceMap3D\Materials" />
      <Folder Include="Assets\3D_GraphicDesign\SatelliteReferenceMap3D" />
      <Folder Include="Assets\3D_GraphicDesign\SatelliteReferenceMap3D\Textures" />
+     <Folder Include="Assets\3D_GraphicDesign\Buildings\MapPin\Fonts" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
