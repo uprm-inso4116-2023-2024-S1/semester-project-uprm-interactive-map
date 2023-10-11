@@ -4,34 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Box, List, ListItem } from "@chakra-ui/react";
 import './Scheduler'
 import Scheduler from "./Scheduler";
-
-const buildingsInfo = [
-    {
-        Name: "Biblioteca General",
-        Info: "Information",
-        Abrev: "Biblioteca"
-    },
-    {
-        Name: "Stefani",
-        Info: "Information",
-        Abrev: "Stefani"
-    },
-    {
-        Name: "Biologia",
-        Info: "Information",
-        Abrev: "Biol"
-    },
-    {
-        Name: "Fisica",
-        Info: "Information",
-        Abrev: "Fisica"
-    },
-    {
-        Name: "Ingenieria Industrial",
-        Info: "Information",
-        Abrev: "Inin"
-    },
-]
+import buildingsInfo from "./Buildings.data";
 
 export default function Sidebar({ sendMessage }) {
     const [showBox, setShowBox] = useState(
@@ -65,7 +38,7 @@ export default function Sidebar({ sendMessage }) {
         <Accordion.Body>
 
             <List>
-                <Button onClick={deselectAllBuildings}>Deselect All Buildings</Button>
+                <Button onClick={deselectAllBuildings} width={"100%"}>Deselect All Buildings</Button>
                 {buildingsInfo.map((item, index) => (
                     <ListItem key={index}>
                     <Button onClick={() => handleButtonClick(index)} width={"100%"}>{item.Name}</Button>
