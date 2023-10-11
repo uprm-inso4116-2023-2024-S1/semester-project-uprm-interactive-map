@@ -8,23 +8,32 @@ import Scheduler from "./Scheduler";
 const buildingsInfo = [
     {
         Name: "Biblioteca General",
-        Info: "Information"
+        Info: "Information",
+        Abrev: "Biblioteca"
     },
     {
         Name: "Stefani",
-        Info: "Information"
+        Info: "Information",
+        Abrev: "Stefani"
     },
     {
         Name: "Biologia",
-        Info: "Information"
+        Info: "Information",
+        Abrev: "Biol"
     },
     {
         Name: "Fisica",
-        Info: "Information"
+        Info: "Information",
+        Abrev: "Fisica"
+    },
+    {
+        Name: "Ingenieria Industrial",
+        Info: "Information",
+        Abrev: "Inin"
     },
 ]
 
-export default function Sidebar() {
+export default function Sidebar({ sendMessage }) {
     const [showBox, setShowBox] = useState(
         Array(buildingsInfo.length).fill(false)
     );
@@ -34,6 +43,11 @@ export default function Sidebar() {
         const newArray = [...showBox];
         newArray[index] = !newArray[index];
         setShowBox(newArray);
+        sendMessage("SelectionManager", "MakeBuildingSelected", buildingsInfo[index].Abrev);
+    }
+
+    function deselectAllBuildings() {
+        sendMessage("SelectionManager", "DeselectAllBuildings");
     }
 
     function openScheduler() {
@@ -51,6 +65,7 @@ export default function Sidebar() {
         <Accordion.Body>
 
             <List>
+                <Button onClick={deselectAllBuildings}>Deselect All Buildings</Button>
                 {buildingsInfo.map((item, index) => (
                     <ListItem key={index}>
                     <Button onClick={() => handleButtonClick(index)} width={"100%"}>{item.Name}</Button>

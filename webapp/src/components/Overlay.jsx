@@ -50,7 +50,9 @@ export const Overlay = (
         width={"100%"}
         style={styles.sidebar}
       >
-        <Sidebar />
+        <Sidebar
+          sendMessage={sendMessage}
+        />
       </Stack>
 
 
