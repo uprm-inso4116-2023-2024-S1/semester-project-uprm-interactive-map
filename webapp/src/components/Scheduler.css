@@ -36,7 +36,7 @@ tr:nth-child(even) {
   border-color: #050505;
 }
 
-.editCourse{
+.deleteCourse{
   position: absolute;
   background-color: red;
   top: 90%;
@@ -45,14 +45,14 @@ tr:nth-child(even) {
   border-color: #050505;
 }
 
-.save{
+/*.save{
   position: absolute;
   background-color: #73c6fa;
   top: 80%;
   left: 85%;
   border-radius: 2px;
   border-color: #050505;
-}
+}*/
 
 .closebtn {
   position: absolute;

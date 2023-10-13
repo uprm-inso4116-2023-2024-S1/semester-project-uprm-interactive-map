@@ -1,0 +1,18 @@
+[
+  {
+    "ClassCode": "INSO4116",
+    "Time": "12:00:00 pm",
+    "Days": "Monday, Wednesday, Friday",
+    "Professor": "Marko Schutz",
+    "Building": "Stefani",
+    "Classroom": 105
+  },
+  {
+    "ClassCode": "INSO4117",
+    "Time": "12:00:00 pm",
+    "Days": "Tuesday, Thursday",
+    "Professor": "Marko Schutz",
+    "Building": "Stefani",
+    "Classroom": 121
+  }
+]

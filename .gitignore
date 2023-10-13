@@ -14,7 +14,7 @@ package-lock.json
 
 /webapp/node_modules/
 /webapp/.env
-
+node_modules
 
 
 # MemoryCaptures can get excessive in size.
