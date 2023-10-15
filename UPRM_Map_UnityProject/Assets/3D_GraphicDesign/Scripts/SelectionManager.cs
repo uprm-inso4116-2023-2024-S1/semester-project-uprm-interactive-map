@@ -47,7 +47,8 @@ public class SelectionManager : MonoBehaviour
         return null;
     }
     
-    public void MakeBuildingSelected(string buildingsNames)
+    //case sensitive. can be multiple building names separated by commas and no space
+    public void MakeBuildingSelected(string buildingsNames) 
     {
         DeselectAllBuildings();
         var namesArr = buildingsNames.Split(',');
