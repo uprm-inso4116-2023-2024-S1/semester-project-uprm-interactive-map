@@ -8,21 +8,17 @@ public class MapPinOverlay : MonoBehaviour
     
     private Vector3 mapPinPosition;
     private RectTransform UIElementRect;
-    //private Vector2 screenPosition;
     private Transform mapPinTransform;
     private RectTransform canvasRect;
     private Camera mainCamera;
 
     void Start()
     {
-        //var parent = transform.parent;
-        //mapPinTransform = parent.transform.Find("MapPinPosition");
+        //Populate the variables
         mapPinTransform = gameObjToFollow.transform;
         canvasRect = transform.parent.GetComponent<RectTransform>();
         UIElementRect = GetComponent<RectTransform>();
         mainCamera = Camera.main;
-
-        //Vector2 viewportPosition = Camera.main.WorldToViewportPoint(WorldObject.transform.position);
     }
     void Update()
     {
