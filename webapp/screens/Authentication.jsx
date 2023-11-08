@@ -52,6 +52,9 @@ export const Authentication = () => {
           At our core, our mission is to empower new students in their educational journey by providing them with a seamless and intuitive means to navigate the university campus. We are dedicated to enhancing the collegiate experience, ensuring that every student, regardless of their background or familiarity with the campus, feels confident and at ease while exploring their academic surroundings. By simplifying campus navigation, we aspire to foster a sense of belonging, reduce stress, and ultimately contribute to the academic success and personal growth of each student who embarks on this exciting new chapter of their lives.
           </div>
         </Center>
+
+        
+
       </Stack>
     </Center>
   );
