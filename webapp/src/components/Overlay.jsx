@@ -22,6 +22,9 @@ export const Overlay = (
     [email]
   );
 
+  function HelpBtn() {
+    alert("I am an alert box! \n I am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \n")
+  }
   function showUserEmail() {
     // Function is called when button is clicked
     // emailText is the name of the GameObject in Unity
@@ -57,6 +60,11 @@ export const Overlay = (
       >
         Sign Out
       </Button>
+
+      <button onClick={() => {
+          HelpBtn();
+        }}>Help
+      </button>
     </Stack>
   );
 };
