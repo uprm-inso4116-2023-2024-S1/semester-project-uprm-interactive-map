@@ -23,7 +23,7 @@ export const Overlay = (
   );
 
   function HelpBtn() {
-    alert("I am an alert box! \n I am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \nI am an alert box! \n")
+    alert("Here's some of the button's functionalities: \nUPRM Interactive Map: Coming soon! \nShow Email: Displays your email on screen \nSign Out: Signs you out and returns you to the home page");
   }
   function showUserEmail() {
     // Function is called when button is clicked

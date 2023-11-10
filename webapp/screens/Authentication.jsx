@@ -1,8 +1,11 @@
+import "./HomePage.css";
+
 import { Button, Center, Input, Stack } from "@chakra-ui/react";
+
 //import "webapp/screens/Authetication.css"
 import React from "react";
 import { supabase } from "../src/supabaseClient";
-import "./HomePage.css";
+
 export const Authentication = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -28,18 +31,24 @@ export const Authentication = () => {
           <Stack spacing={2}>
             <Input
               placeholder="email"
+              type='email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <Input
               placeholder="password"
               value={password}
+              type="password"
               onChange={(e) => setPassword(e.target.value)}
             />
             <Button onClick={async () => supabase.auth.signInWithPassword({ email, password })}>
               Sign In
             </Button>
-            <Button onClick={() => supabase.auth.signUp({ email, password })}>
+            <Button onClick={ () =>{ 
+              supabase.auth.signUp({ email, password  })
+
+  
+               }   }>
               Sign Up
             </Button>
           </Stack>
