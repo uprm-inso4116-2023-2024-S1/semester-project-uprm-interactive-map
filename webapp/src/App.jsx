@@ -19,9 +19,9 @@ export default function App() {
   const { unityProvider, loadingProgression, isLoaded, sendMessage } =
     useUnityContext({
       loaderUrl: "/Builds.loader.js",
-      dataUrl: "/Builds.data",
-      frameworkUrl: "/Builds.framework.js",
-      codeUrl: "/Builds.wasm",
+      dataUrl: "/Builds.data.unityweb",
+      frameworkUrl: "/Builds.framework.js.unityweb",
+      codeUrl: "/Builds.wasm.unityweb",
     });
 
   useEffect(() => {

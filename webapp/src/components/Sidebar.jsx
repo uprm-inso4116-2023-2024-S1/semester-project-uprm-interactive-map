@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import Accordion from "react-bootstrap/Accordion";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Box, List, ListItem } from "@chakra-ui/react";
 import './Scheduler'
+
+import { AccordionButton, Box, Button, List, ListItem } from "@chakra-ui/react";
+import React, { useState } from "react";
+
+import Accordion from "react-bootstrap/Accordion";
 import Scheduler from "./Scheduler";
 import buildingsInfo from "./Buildings.data";
 
@@ -32,6 +34,7 @@ export default function Sidebar({ sendMessage }) {
     }
 
   return (
+    <>
     <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="1">
         <Accordion.Header>Building</Accordion.Header>
@@ -41,13 +44,15 @@ export default function Sidebar({ sendMessage }) {
                 <Button onClick={deselectAllBuildings} width={"100%"}>Deselect All Buildings</Button>
                 {buildingsInfo.map((item, index) => (
                     <ListItem key={index}>
-                    <Button onClick={() => handleButtonClick(index)} width={"100%"}>{item.Name}</Button>
+                    <Button onClick={() => handleButtonClick(index)}
+                        backgroundColor={showBox[index] ? "lightblack" : "grey"}
+                     width={"100%"}>{item.Name}</Button>
                     {showBox[index] && (
                         <Box
                             width="100%"
                             height="auto"
-                            backgroundColor="black"
-                            color="white"
+                            backgroundColor="white"
+                            color="black"
                         >
                             <p>{item.Info}</p>
                         </Box>
@@ -70,15 +75,17 @@ export default function Sidebar({ sendMessage }) {
                 Add courses
             </Button>
 
-            {showScheduler && (
-                <Scheduler
-                    closeScheduler={closeScheduler}
-                />
-            )}
+          
 
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
+     {showScheduler && (
+        <Scheduler
+            closeScheduler={closeScheduler}
+        />
+    )}
+</>
   );
 }
 

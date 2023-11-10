@@ -1,10 +1,11 @@
 ﻿.addCourseModal {
-    height: 700px;
+    height: '40%';
     width: 750%;
     background-color: rgb(223, 234, 223);
     position: absolute;
     top: 100%;
     right: -765%;
+    border-radius: 10px;
 }
 
 .header {
