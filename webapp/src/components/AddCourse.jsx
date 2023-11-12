@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import Select from "react-select";
 import { supabase } from "../supabaseClient";
+import * as Courses from "../api/dbCourses"
 
 function AddCourse({ closeAddModal }) {
   const [days, setDays] = useState([]);
@@ -91,7 +92,8 @@ const [sectionCode, setSectionCode] = useState("");
       Professor: professor,
       Building: selectedBuildings?.value || "",
     };
-    alert(JSON.stringify(output_json)); // Here you send it to the backend with a post method instead of just showing it
+    // alert(JSON.stringify(output_json)); // Here you send it to the backend with a post method instead of just showing it
+
   };
 
   return (
@@ -188,21 +190,23 @@ const [sectionCode, setSectionCode] = useState("");
               colorScheme="blue"
               backgroundColor="Green"
               onClick={async () => {
-               const { data, error } = await supabase
-                  .from("courses")
-                  .insert([
-                    {
-                      course_code: classCode,
-                      section: sectionCode,
-                      classroom_num: 'S-404',
-                      time: time,
-                      days: selectedDays,
-                      professor: professor,
-                      building: selectedBuildings?.value,
-                      building_id: 2,
-                    },
-                  ]).select();
-                console.log(data, error);
+
+                // Turn the selectedDays into a list
+                var daysList = []
+                for (var i in selectedDays) {
+                
+                    daysList.push(selectedDays[i]['value'])
+                }
+
+                const result = await Courses.addNewCourse({
+                  course_code: classCode,
+                  section: sectionCode,
+                  classroom_num: 'S-404', // Must be changed
+                  time: time,
+                  days: daysList,
+                  professor: professor,
+                  building_id: 3 // Must be changed
+                })
 
                 closeAddModal();
               }}

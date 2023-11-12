@@ -3,9 +3,36 @@ import { Button, Center, Input, Stack } from "@chakra-ui/react";
 import React from "react";
 import { supabase } from "../src/supabaseClient";
 import "./HomePage.css";
+import * as Accounts from "../src/api/dbAccounts"
+
+
 export const Authentication = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+
+  const handleRegister = async () => {
+
+    // Verify if user is registered
+    const result = await Accounts.getAccountByEmail({email})
+    if (result.length > 0) {
+        alert("User already registered")
+        console.log("User already registered")
+    }
+
+    // Register user if it is not already
+    else{
+      try {
+        Accounts.addNewAccount({email, password})
+        await supabase.auth.signUp({email, password})
+
+      } 
+      catch (error) {
+        alert(error)
+      }
+
+    }
+
+  }
 
   return (
     <Center bg="#4D7E3E" height="100vh" width="100vw">
@@ -39,7 +66,7 @@ export const Authentication = () => {
             <Button onClick={async () => supabase.auth.signInWithPassword({ email, password })}>
               Sign In
             </Button>
-            <Button onClick={() => supabase.auth.signUp({ email, password })}>
+            <Button onClick={handleRegister}>
               Sign Up
             </Button>
           </Stack>

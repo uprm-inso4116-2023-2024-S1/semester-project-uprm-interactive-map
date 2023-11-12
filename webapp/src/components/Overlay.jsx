@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import Sidebar from "./Sidebar";
 import { supabase } from "../supabaseClient";
+import * as Courses from "../api/dbCourses";
 
 export const Overlay = (
   {sendMessage}
@@ -35,24 +36,14 @@ export const Overlay = (
       return "Loading...";
     }
   }
-  function handleSearch() {
+
+  const handleSearch = async() => {
     // Handle search here (you can call a function or perform an API request)
     console.log("Search Query:", searchQuery);
-    (
-      async () => {
-        const query = await supabase.from("courses").select("*")
-        // get first 3 items in query that contain searchQuery
-        let arr = []
-        for (let i = 0; i < query.data.length; i++) {
-          const course = query.data[i];
-          if (course.course_code.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase()) && arr.length < 4 ) {
-            arr.push(course)
-          }
-        }
-        setSearchResults(arr)
-      }
-    )()
+    const result = await Courses.getCoursesMatchingString(searchQuery)
+    setSearchResults(result)
   }
+
   return (
     // horizontal stack of buttons
 
@@ -105,7 +96,7 @@ export const Overlay = (
         
 
       <Button  borderRadius={10}
-      marginBottom={5} onClick={() => handleSearch()}>Search</Button>
+      marginBottom={5} onClick={handleSearch}>Search</Button>
       <Button
       borderRadius={10}
       marginBottom={5}

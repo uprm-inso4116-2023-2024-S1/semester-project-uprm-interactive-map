@@ -8,6 +8,9 @@ import AddCourse from "./AddCourse";
 import { AiOutlineClose } from "react-icons/ai";
 import { supabase } from '../supabaseClient';
 
+import * as Accounts from "../api/dbAccounts"
+import * as EnrolledCourses from "../api/dbEnrolledCourses"
+
 function Scheduler({ closeScheduler }) {
     const [enrolled_courses, setEnrolledCourses] = useState(null);
     const [courseData, setCourseData] = useState([]);
@@ -31,16 +34,17 @@ function Scheduler({ closeScheduler }) {
       ( async () => {
             if(enrolled_courses === null) {
             //    ADD Only get courses that are enrolled in
-                const query = await supabase.from("enrolled_courses").select("*")
-                setEnrolledCourses(query.data)
+                const email = await Accounts.getLoggedUserEmailAddress() // Gets the email of the logged user
+                const courses = await EnrolledCourses.getEnrolledCoursesByEmail(email)
+                console.log("Courses: ", courses)
+                setEnrolledCourses(courses)
                 // for each item in courses
                 // get the course data
-                for (let i = 0; i < query.data.length; i++) {
-                    const course = query.data[i];
-                    const courseQuery = await supabase.from("courses").select("*").eq("course_id", course.course_id)
+                for (let i = 0; i < courses.length; i++) {
+                    const course = courses[i];
                     setCourseData([
                         ...courseData,
-                        courseQuery.data[0]
+                        course.courses
                     ])
                     console.log(courseData)
                 }
@@ -85,7 +89,8 @@ function Scheduler({ closeScheduler }) {
                         <tr>
                             <th>Class code</th>
                             <th>Section</th>
-                            <th>Time/Days</th>
+                            <th>Days</th>
+                            <th>Time</th>
                             <th>Professor</th>
                             <th>Building</th>
                             <th>Classroom</th>
@@ -95,9 +100,10 @@ function Scheduler({ closeScheduler }) {
                                 <tr key={index}>
                                     <td>{item.course_code}</td>
                                     <td>{item.section}</td>
-                                    <td>{'--:--:--'}</td>
-                                    <td>{'--:--:--'}</td>
-                                    <td>{item.building_id}</td>
+                                    <td>{item.days}</td>
+                                    <td>{item.time}</td>
+                                    <td>{item.professor}</td>
+                                    <td>{item.buildings.name}</td>
                                     <td>{item.classroom_num}</td>
                                 </tr>
                             ))
