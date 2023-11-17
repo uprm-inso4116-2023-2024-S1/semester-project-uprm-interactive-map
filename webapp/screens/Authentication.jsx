@@ -3,9 +3,16 @@ import { Button, Center, Input, Stack } from "@chakra-ui/react";
 import React from "react";
 import { supabase } from "../src/supabaseClient";
 import "./HomePage.css";
-export const Authentication = () => {
+import { useNavigate } from "react-router-dom";
+
+export default function Authentication() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const navigate = useNavigate();
+
+  function handleNavigate() {
+    navigate("/");
+  };
 
   return (
     <Center bg="#4D7E3E" height="100vh" width="100vw">
@@ -36,10 +43,16 @@ export const Authentication = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button onClick={async () => supabase.auth.signInWithPassword({ email, password })}>
+            <Button onClick={async () => {
+              supabase.auth.signInWithPassword({ email, password });
+              handleNavigate();
+            }}>
               Sign In
             </Button>
-            <Button onClick={() => supabase.auth.signUp({ email, password })}>
+            <Button onClick={() => {
+              supabase.auth.signUp({ email, password });
+              handleNavigate();
+            }}>
               Sign Up
             </Button>
           </Stack>

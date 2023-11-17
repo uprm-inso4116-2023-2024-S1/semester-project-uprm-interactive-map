@@ -2,6 +2,7 @@ import { Button, Stack, Input } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
 import Sidebar from "./Sidebar";
+import { useNavigate } from "react-router-dom";
 
 export const Overlay = (
   {sendMessage}
@@ -9,6 +10,8 @@ export const Overlay = (
   // set email to null to prevent infinite loop
   const [email, setEmail] = React.useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [currSession, setCurrSession] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(
     () => {
@@ -16,6 +19,7 @@ export const Overlay = (
         supabase.auth.getSession().then(({ data: { session } }) => {
           // on build check if session has a registered user
           setEmail(session.user.email);
+          setCurrSession(session);
         });
       }
     },
@@ -38,6 +42,11 @@ export const Overlay = (
     // Handle search here (you can call a function or perform an API request)
     console.log("Search Query:", searchQuery);
   }
+
+  function handleNavigate() {
+    navigate("/Authentication");
+  };
+
   return (
     // horizontal stack of buttons
 
@@ -80,13 +89,24 @@ export const Overlay = (
       >
       </Input>
       <Button onClick={() => handleSearch()}>Search</Button>
-      <Button
-        onClick={() => {
-          supabase.auth.signOut();
-        }}
-      >
-        Sign Out
-      </Button>
+      {currSession ? (
+        <Button
+          onClick={() => {
+            supabase.auth.signOut();
+            handleNavigate();
+          }}
+        >
+          Sign Out
+        </Button>
+      ) : (
+        <Button
+          onClick={() => {
+            handleNavigate();
+          }}
+        >
+          Sign In
+        </Button>
+      )}
           </Stack>
     </>
   );
