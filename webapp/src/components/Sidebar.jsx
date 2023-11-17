@@ -5,6 +5,7 @@ import { Button, Box, List, ListItem } from "@chakra-ui/react";
 import './Scheduler'
 import Scheduler from "./Scheduler";
 import buildingsInfo from "./Buildings.data";
+import "./Sidebar.css";
 
 export default function Sidebar({ sendMessage }) {
     const [showBox, setShowBox] = useState(
@@ -34,8 +35,8 @@ export default function Sidebar({ sendMessage }) {
   return (
     <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="1">
-        <Accordion.Header>Building</Accordion.Header>
-        <Accordion.Body>
+        <Accordion.Header className="accordion-header">Building</Accordion.Header>
+        <Accordion.Body className="accordion-body">
 
             <List>
                 <Button onClick={deselectAllBuildings} width={"100%"}>Deselect All Buildings</Button>
@@ -46,7 +47,7 @@ export default function Sidebar({ sendMessage }) {
                         <Box
                             width="100%"
                             height="auto"
-                            backgroundColor="black"
+                            backgroundColor="#1a1a1a"
                             color="white"
                         >
                             <p>{item.Info}</p>
