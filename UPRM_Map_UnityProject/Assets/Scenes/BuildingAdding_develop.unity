@@ -153,7 +153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &43601583
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2865,7 +2865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1074029330
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5082,7 +5082,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1713288987
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5842,6 +5842,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865460021}
   m_CullTransparentMesh: 1
+--- !u!4 &1873784617 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2254163953773513615, guid: 6f998417b405c2745934d40961bfa704,
+    type: 3}
+  m_PrefabInstance: {fileID: 1274225886648212861}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1915538231 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1058317052992006813, guid: 733afaf2de4fa024c88fff3d6ab476cf,
@@ -7176,6 +7182,74 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -2.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &1274225886648212861
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2924696909806825128}
+    m_Modifications:
+    - target: {fileID: 1442196970194686261, guid: 6f998417b405c2745934d40961bfa704,
+        type: 3}
+      propertyPath: m_Name
+      value: Alzamora
+      objectReference: {fileID: 0}
+    - target: {fileID: 2254163953773513615, guid: 6f998417b405c2745934d40961bfa704,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -833
+      objectReference: {fileID: 0}
+    - target: {fileID: 2254163953773513615, guid: 6f998417b405c2745934d40961bfa704,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 2254163953773513615, guid: 6f998417b405c2745934d40961bfa704,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 188
+      objectReference: {fileID: 0}
+    - target: {fileID: 2254163953773513615, guid: 6f998417b405c2745934d40961bfa704,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.016007066
+      objectReference: {fileID: 0}
+    - target: {fileID: 2254163953773513615, guid: 6f998417b405c2745934d40961bfa704,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.016007116
+      objectReference: {fileID: 0}
+    - target: {fileID: 2254163953773513615, guid: 6f998417b405c2745934d40961bfa704,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.706926
+      objectReference: {fileID: 0}
+    - target: {fileID: 2254163953773513615, guid: 6f998417b405c2745934d40961bfa704,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7069252
+      objectReference: {fileID: 0}
+    - target: {fileID: 2254163953773513615, guid: 6f998417b405c2745934d40961bfa704,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2254163953773513615, guid: 6f998417b405c2745934d40961bfa704,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2254163953773513615, guid: 6f998417b405c2745934d40961bfa704,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 182.594
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f998417b405c2745934d40961bfa704, type: 3}
 --- !u!114 &1318015444660104927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7347,7 +7421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2200349117721405614
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7746,6 +7820,7 @@ Transform:
   - {fileID: 2425403663700612290}
   - {fileID: 5081346902677045858}
   - {fileID: 7636562907643361938}
+  - {fileID: 1873784617}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2927533509956088323
