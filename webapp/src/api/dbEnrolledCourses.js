@@ -12,7 +12,7 @@ export async function updateCourse(id, data) {
     }
 
 
-export async function getEnrolledCoursesByEmail(email) {
+export async function getEnrolledCoursesByEmail(id) {
     /*
     This method returns the logged user enrolled courses. The days are an array of strings.
 
@@ -24,12 +24,31 @@ export async function getEnrolledCoursesByEmail(email) {
     const {data, error} = await supabase
         .from('enrolled_courses')
         .select(`
-            accounts!inner(email_address),
-            courses!inner(course_code, section, days, time, professor, classroom_num, buildings(name))
+            accounts!inner(account_id),
+            courses!inner(course_id, course_code, section, days, time, professor, classroom_num, buildings(name))
         `)
-        .eq('accounts.email_address', email)
+        .eq('accounts.account_id', id)
         .eq('courses.is_valid', true)
         .eq('is_valid', true)
+
+    if (error) {
+        console.log(error)
+        return
+    }
+
+    return data
+}
+
+export async function unenrollCourseByAccoutnIdAndCourseCode(account_id, course_code) {
+    /*
+    This method unenrolls a course from the logged user.
+    */
+
+    const {data, error} = await supabase
+        .from('enrolled_courses')
+        .update({is_valid: false})
+        .eq('account_id', account_id)
+        .eq('course_id', course_code)
 
     if (error) {
         console.log(error)

@@ -1,12 +1,13 @@
 import "./AddCourse.css";
 
+import * as Courses from "../api/dbCourses"
+
 import { Box, Button, HStack, IconButton, Input } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 
 import { AiOutlineClose } from "react-icons/ai";
 import Select from "react-select";
 import { supabase } from "../supabaseClient";
-import * as Courses from "../api/dbCourses"
 
 function AddCourse({ closeAddModal }) {
   const [days, setDays] = useState([]);

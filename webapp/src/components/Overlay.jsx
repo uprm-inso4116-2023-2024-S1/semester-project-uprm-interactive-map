@@ -1,9 +1,10 @@
+import * as Courses from "../api/dbCourses";
+
 import { Box, Button, Input, Stack } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 
 import Sidebar from "./Sidebar";
 import { supabase } from "../supabaseClient";
-import * as Courses from "../api/dbCourses";
 
 export const Overlay = (
   {sendMessage}
@@ -36,12 +37,22 @@ export const Overlay = (
       return "Loading...";
     }
   }
+  function actionBuilding(buildingName){
+    console.log("Building Name:", buildingName);
+    sendMessage(buildingName, "MakeBuildingSelected", buildingName);
+  }
 
   const handleSearch = async() => {
     // Handle search here (you can call a function or perform an API request)
     console.log("Search Query:", searchQuery);
-    const result = await Courses.getCoursesMatchingString(searchQuery)
-    setSearchResults(result)
+    if(searchQuery === "biologia" || searchQuery === "Biologia"){
+      // Add code to show the library
+      actionBuilding("Biologia")
+    } else{
+
+      const result = await Courses.getCoursesMatchingString(searchQuery)
+      setSearchResults(result)
+    }
   }
 
   return (
