@@ -40,7 +40,9 @@ export const Overlay = (
   const handleSearch = async() => {
     // Handle search here (you can call a function or perform an API request)
     console.log("Search Query:", searchQuery);
-    const result = await Courses.getCoursesMatchingString(searchQuery)
+    const str = searchQuery;
+    const searchQueryTrimmed = str.replaceAll(' ', ''); // Decided to cut spaces on the search Query in order to make sure that it can search for ie.  PSIC3002 and PSIC 3002.
+    const result = await Courses.getCoursesMatchingString(searchQueryTrimmed)
     setSearchResults(result)
   }
 
