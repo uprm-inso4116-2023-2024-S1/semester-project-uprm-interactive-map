@@ -1,15 +1,15 @@
 import './Scheduler.css';
 import './AddCourse'
 
-import { Box, Button, HStack, IconButton } from "@chakra-ui/react";
+import * as Accounts from "../api/dbAccounts"
+import * as EnrolledCourses from "../api/dbEnrolledCourses"
+
+import { AiOutlineClose, AiOutlineDelete } from "react-icons/ai";
+import { Box, Button, HStack, Icon, IconButton } from "@chakra-ui/react";
 import React, { useEffect, useState } from 'react';
 
 import AddCourse from "./AddCourse";
-import { AiOutlineClose } from "react-icons/ai";
 import { supabase } from '../supabaseClient';
-
-import * as Accounts from "../api/dbAccounts"
-import * as EnrolledCourses from "../api/dbEnrolledCourses"
 
 function Scheduler({ closeScheduler }) {
     const [enrolled_courses, setEnrolledCourses] = useState(null);
@@ -31,10 +31,11 @@ function Scheduler({ closeScheduler }) {
     //     });
     // }
     useEffect(() => {
-        (async () => {
-            if (enrolled_courses === null) {
-                const email = await Accounts.getLoggedUserEmailAddress();
-                const courses = await EnrolledCourses.getEnrolledCoursesByEmail(email);
+      ( async () => {
+            if(enrolled_courses === null) {
+            //    ADD Only get courses that are enrolled in
+                const id = await Accounts.getLoggedUserAccountID() // Gets the email of the logged user
+                const courses = await EnrolledCourses.getEnrolledCoursesByEmail(id)  
                 console.log("Courses: ", courses);
                 setEnrolledCourses(courses);
     
@@ -43,7 +44,6 @@ function Scheduler({ closeScheduler }) {
             }
         })();
     }, [enrolled_courses]);
- 
 
     const [showAddModal, setAddModal] = useState(false);
 
@@ -86,6 +86,36 @@ function Scheduler({ closeScheduler }) {
                             <th>Classroom</th>
                         </tr>
                         {
+                            enrolled_courses && enrolled_courses.map((item, index) => (
+                                <tr key={index}>
+                                    <td>{item.courses.course_code}</td>
+                                    <td>{item.courses.section}</td>
+                                    <td>{item.courses.days}</td>
+                                    <td>{item.courses.time}</td>
+                                    <td>{item.courses.professor}</td>
+                                    <td>{item.courses.buildings.name}</td>
+                                    <td>{item.courses.classroom_num}</td>
+                                    {/* drop out buton */}
+                                    <td>
+                                        {/* <Button borderRadius={10} className="dropCourse"> */}
+                                        <IconButton
+                                            p={3}
+                                            size={"md"}
+                                            borderRadius={10}
+
+                                         icon={<AiOutlineDelete />} onClick={ async () => {
+
+                                            await EnrolledCourses.unenrollCourseByAccoutnIdAndCourseCode(item.accounts.account_id, item.courses.course_id)
+                                            
+                                         }
+                                            
+                                         } />
+                                        {/* </Button> */}
+                                     </td>
+                                </tr>
+                            ))
+                        }
+                        {/* {
                             courseData && courseData.map((item, index) => (
                                 <tr key={index}>
                                     <td>{item.course_code}</td>
@@ -97,7 +127,7 @@ function Scheduler({ closeScheduler }) {
                                     <td>{item.classroom_num}</td>
                                 </tr>
                             ))
-                        }
+                        } */}
                     </tbody>
                 </table>
                <HStack margin={5} >
