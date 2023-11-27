@@ -72,7 +72,7 @@ export default function Sidebar({ sendMessage }) {
                 backgroundColor="Green" 
                 onClick={openScheduler}
             >
-                Add courses
+                Open Schedule
             </Button>
 
           

@@ -31,28 +31,18 @@ function Scheduler({ closeScheduler }) {
     //     });
     // }
     useEffect(() => {
-      ( async () => {
-            if(enrolled_courses === null) {
-            //    ADD Only get courses that are enrolled in
-                const email = await Accounts.getLoggedUserEmailAddress() // Gets the email of the logged user
-                const courses = await EnrolledCourses.getEnrolledCoursesByEmail(email)
-                console.log("Courses: ", courses)
-                setEnrolledCourses(courses)
-                // for each item in courses
-                // get the course data
-                for (let i = 0; i < courses.length; i++) {
-                    const course = courses[i];
-                    setCourseData([
-                        ...courseData,
-                        course.courses
-                    ])
-                    console.log(courseData)
-                }
+        (async () => {
+            if (enrolled_courses === null) {
+                const email = await Accounts.getLoggedUserEmailAddress();
+                const courses = await EnrolledCourses.getEnrolledCoursesByEmail(email);
+                console.log("Courses: ", courses);
+                setEnrolledCourses(courses);
+    
+                const newCourseData = courses.map(course => course.courses); // map over the courses
+                setCourseData(newCourseData); // set the entire new array at once
             }
-        }
-      )()
-    }
-    , [courseData, enrolled_courses]);
+        })();
+    }, [enrolled_courses]);
  
 
     const [showAddModal, setAddModal] = useState(false);
