@@ -6,6 +6,8 @@ using UnityEngine;
 public class MapPinFactory : MonoBehaviour
 {
     public GameObject mapPinPrefab;
+    public Color medicalCenterColor;
+    public Color sportsColor;
 
     private void Start()
     {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
+using static System.String;
 
 public class TextboxBuildingSelect : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class TextboxBuildingSelect : MonoBehaviour
 
     public void SelectFromTextbox()
     {
-        if (String.IsNullOrEmpty(textField.text))
+        if (IsNullOrEmpty(textField.text))
         {
             SelectionManager.DeselectAllBuildings();
             return;

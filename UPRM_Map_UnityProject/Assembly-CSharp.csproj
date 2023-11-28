@@ -53,6 +53,7 @@
      <Compile Include="Assets\3D_GraphicDesign\Buildings\SelectionManager.cs" />
      <Compile Include="Assets\3D_GraphicDesign\Buildings\Building.cs" />
      <Folder Include="Assets" />
+     <Folder Include="Assets\3D_GraphicDesign\Buildings\FBX Models\ExtractedMaterials" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <Folder Include="Assets\Settings" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

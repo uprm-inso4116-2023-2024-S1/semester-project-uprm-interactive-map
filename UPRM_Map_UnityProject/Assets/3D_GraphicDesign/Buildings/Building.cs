@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 public class Building: MonoBehaviour
 {
     public string abbreviation;
-    public Vector3 mapPinPosition;
+    [HideInInspector] public Vector3 mapPinPosition;
     
     private string shortName;
 

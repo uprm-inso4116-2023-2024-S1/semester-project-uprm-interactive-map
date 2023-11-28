@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,14 @@ public class SelectionManager : MonoBehaviour
         public GameObject mapPin;
         public bool isSelected;
     }
+
+    private void Awake()
+    {
+        #if UNITY_WEBGL == true && UNITY_EDITOR == false
+            WebGLInput.captureAllKeyboardInput = false;
+        #endif
+    }
+
     void Start()
     {
         mapPins = GameObject.FindGameObjectsWithTag("MapPin");
