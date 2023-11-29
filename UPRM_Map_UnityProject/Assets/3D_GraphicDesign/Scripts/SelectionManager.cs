@@ -24,9 +24,7 @@ public class SelectionManager : MonoBehaviour
 
     private void Awake()
     {
-        #if UNITY_WEBGL == true && UNITY_EDITOR == false
-            WebGLInput.captureAllKeyboardInput = false;
-        #endif
+        WebGLInput.captureAllKeyboardInput = false;
     }
 
     void Start()
