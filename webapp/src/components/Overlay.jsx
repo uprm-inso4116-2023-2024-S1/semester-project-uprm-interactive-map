@@ -37,26 +37,55 @@ export const Overlay = (
       return "Loading...";
     }
   }
-  function actionBuilding(buildingName){
-    console.log("Building Name:", buildingName);
-    sendMessage(buildingName, "MakeBuildingSelected", buildingName);
-  }
 
   const handleSearch = async() => {
     // Handle search here (you can call a function or perform an API request)
+    sendMessage("SelectionManager", "DeselectAllBuildings")
+    // if string contains Stefani
+    if(searchQuery === "Stefani"){
     console.log("Search Query:", searchQuery);
+    sendMessage("SelectionManager", "MakeBuildingSelected", 'Stefani')
+  } else if (searchQuery === "Biblioteca"){
+    console.log("Search Query:", searchQuery);
+    sendMessage("SelectionManager", "MakeBuildingSelected", 'Biblioteca')
+  } else if (searchQuery === "Luis"){
+    console.log("Search Query:", searchQuery);
+    sendMessage("SelectionManager", "MakeBuildingSelected", 'Luis')
+  }
+  else if (searchQuery === "Chardon"){
+    console.log("Search Query:", searchQuery);
+    sendMessage("SelectionManager", "MakeBuildingSelected", 'Chardon')
+  }
+  else if (searchQuery === "ROTC"){
+    console.log("Search Query:", searchQuery);
+    sendMessage("SelectionManager", "MakeBuildingSelected", 'ROTC/')
+  }   else if (searchQuery === "Centro"){
+    console.log("Search Query:", searchQuery);
+    sendMessage("SelectionManager", "MakeBuildingSelected", 'Centro')
+  }     else if (searchQuery === "Quimica") {
+    console.log("Search Query:", searchQuery);
+    sendMessage("SelectionManager", "MakeBuildingSelected", 'Quimica')
+  }  else if (searchQuery === "Fisica") {
+    console.log("Search Query:", searchQuery);
+    sendMessage("SelectionManager", "MakeBuildingSelected", 'Fisica')
+  } else if (searchQuery === "Hidalgo") {
+    console.log("Search Query:", searchQuery);
+    sendMessage("SelectionManager", "MakeBuildingSelected", 'Hidalgo')
+  } else if (searchQuery === "Oficinas") {
+    console.log("Search Query:", searchQuery);
+    sendMessage("SelectionManager", "MakeBuildingSelected", 'Oficinas')
+  }
+  
+  else{
     const str = searchQuery;
     const searchQueryTrimmed = str.replaceAll(' ', ''); // Decided to cut spaces on the search Query in order to make sure that it can search for ie.  PSIC3002 and PSIC 3002.
-    if(searchQuery === "biologia" || searchQuery === "Biologia"){
-      // Add code to show the library
-      actionBuilding("Biologia")
-    } else{
-
-      const result = await Courses.getCoursesMatchingString(searchQueryTrimmed)
-      setSearchResults(result)
-    }
+    const result = await Courses.getCoursesMatchingString(searchQueryTrimmed)
+    setSearchResults(result)
   }
-
+  }
+  function HelpBtn() {
+    alert("Here's some of the button's functionalities: \nUPRM Interactive Map: Coming soon! \nShow Email: Displays your email on screen \nSign Out: Signs you out and returns you to the home page");
+  }
   return (
     // horizontal stack of buttons
 
@@ -119,6 +148,13 @@ export const Overlay = (
         }}
       >
         Sign Out
+      </Button>
+      <Button
+         borderRadius={10}
+      marginBottom={5}
+       onClick={() => {
+          HelpBtn();
+        }}>Help
       </Button>
           </Stack>
           {/* Search recomendations */}

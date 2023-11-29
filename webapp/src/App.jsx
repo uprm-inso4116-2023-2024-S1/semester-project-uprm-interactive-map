@@ -18,10 +18,10 @@ export default function App() {
   // following files are from the Unity build exporter for webgl
   const { unityProvider, loadingProgression, isLoaded, sendMessage } =
     useUnityContext({
-      loaderUrl: "/Builds.loader.js",
-      dataUrl: "/Builds.data.unityweb",
-      frameworkUrl: "/Builds.framework.js.unityweb",
-      codeUrl: "/Builds.wasm.unityweb",
+      loaderUrl: "/UPRM_InteractiveMap_WebGL_Test9.loader.js",
+      dataUrl: "/UPRM_InteractiveMap_WebGL_Test9.data",
+      frameworkUrl: "/UPRM_InteractiveMap_WebGL_Test9.framework.js",
+      codeUrl: "/UPRM_InteractiveMap_WebGL_Test9.wasm",
     });
 
   useEffect(() => {
