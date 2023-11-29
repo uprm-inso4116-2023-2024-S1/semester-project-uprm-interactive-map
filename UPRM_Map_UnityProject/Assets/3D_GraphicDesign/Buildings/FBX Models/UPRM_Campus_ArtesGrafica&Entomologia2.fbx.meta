@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: 5dfd701a8c7e8ec4889f52916ff51572
+guid: a639ae1daf2b42f46a94e48f85274233
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Basketball
-    second: {fileID: 2100000, guid: 48fa9c18253881746b976e0b3b399d62, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Basketball_Backboard
-    second: {fileID: 2100000, guid: d3fefabc131551c43870b3631720fe68, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Basketball_Rim
-    second: {fileID: 2100000, guid: 08263442acf46924c9118b15fe190585, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

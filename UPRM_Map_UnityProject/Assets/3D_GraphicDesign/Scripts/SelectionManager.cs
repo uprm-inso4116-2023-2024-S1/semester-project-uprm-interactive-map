@@ -31,16 +31,23 @@ public class SelectionManager : MonoBehaviour
 
     void Start()
     {
+        //We want to wait for the map pins to be set up before executing this
+        StartCoroutine(LateStart(0.02f));
+    }
+
+    private IEnumerator LateStart(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
         mapPins = GameObject.FindGameObjectsWithTag("MapPin");
         foreach  (var buildingObj in GameObject.FindGameObjectsWithTag("Building"))
         {
             buildings.Add(new Building
-                {
-                    name = buildingObj.name,
-                    render = buildingObj.GetComponent<Renderer>(),
-                    mapPin = MapPinOfBuildingName(buildingObj.name),
-                    isSelected = false
-                });
+            {
+                name = buildingObj.name,
+                render = buildingObj.GetComponent<Renderer>(),
+                mapPin = MapPinOfBuildingName(buildingObj.name),
+                isSelected = false
+            });
         }
     }
     
